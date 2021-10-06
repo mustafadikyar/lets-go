@@ -1,7 +1,14 @@
 # lets-go
 
-## Hello World!
+Herkese selam, **GoLang** öğrenmeye başladığım bu günlerde hem *Türkçe kaynak* oluşturmak hem de kendi adıma öğrenmenin 
+en etkili yolunun birilerine anlatmak olduğunu düşündüğümden şuan incelemekte olduğunuz kaynak ortaya çıkmış bulunuyor. 
 
+<details>
+<summary>Hello World!</summary>
+<br>
+	
+<a name="hello-world" />
+	
 ```go
 package main
 
@@ -22,9 +29,15 @@ func main(){
 	var Surname string = "dikyar" //<-- Büyük harf public
 }
 ```
+</details>
 
-## Değişkenler
 
+
+
+<details>
+<summary>Değişkenler</summary>
+<br>
+	
 ```go
 package main
 
@@ -87,8 +100,11 @@ func main(){
 	fmt.Println(name, surname) //Mustafa Dikyar
 }
 ```
+</details>
 
-## Sabitler
+<details>
+<summary>Sabitler</summary>
+<br>
 
 ```go
 package main
@@ -101,9 +117,13 @@ func main(){
 	fmt.Println(name, pi) //Mustafa 3.14
 }
 ```
+	
+</details>
 
-## Operatörler
-
+<details>
+<summary>Operatörler</summary>
+<br>
+	
 ### Aritmatik Operatörler
 
 | Operatör      |  Açıklama   |
@@ -148,4 +168,95 @@ func main(){
 | *=            | Sağdaki değeri soldaki değer ile çarpar ve soldaki değişkene atar.      |
 | /=            | Sağdaki değeri soldaki değere böler ve soldaki değişkene atar.          |
 
+</details>
+	
+<details>
+<summary>Break Identifier</summary>
+<br>
+     
+```go
+package main
 
+import "fmt"
+
+func main(){
+	
+	/*GetData metotu ya veri dönecek ya hata dönecek olduğunu varsayarsak.
+	İki değerden birisi null gelecek hata alacağız.
+	Sadece data var mı yok mu ile ilgilenmek istediğimiz zaman _ (break identifier) ile boş bir tanımlayıcı kullanabiliriz.
+	*/
+
+	//errorCode, data := GetData()
+	//_, data := GetData()
+
+	var _, number, _ = 0, 15, ""
+	fmt.Println(number) //15
+}
+```
+	
+</details>
+
+<details>
+<summary>Enums</summary>
+<br>
+	
+Doğrudan bir enum kullanımı yok.
+
+```go
+package main
+
+import "fmt"
+
+type Language string
+const(
+	Turkish Language = "tr"
+	English Language = "en"
+	Russian Language = "ru"
+)
+
+func GetLanguage(language Language){
+	fmt.Println(language)
+}
+
+func main(){
+	GetLanguage(Turkish) //tr
+	GetLanguage(Russian) //ru
+}
+```
+	
+</details>
+	
+<details>
+<summary>Tür Dönüşümleri</summary>
+<br>
+
+```go
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	var firstNumber = "10"
+
+	//Convert
+
+	//string to int
+	number, _ := strconv.Atoi(firstNumber)
+	result := number + 3
+	fmt.Println(result) //13
+
+	//int to string
+	fmt.Println("Sonuç : " + strconv.Itoa(result)) //Sonuç : 13
+
+	//Casting
+	var secondNumber float64 = 11.1
+	var intNumber = int(secondNumber)
+	fmt.Println(intNumber) //11
+}
+
+```
+	
+</details>
