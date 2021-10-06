@@ -117,14 +117,14 @@ func main(){
 	fmt.Println(name, pi) //Mustafa 3.14
 }
 ```
-	
 </details>
 
 <details>
 <summary>Operatörler</summary>
 <br>
 	
-### Aritmatik Operatörler
+
+Aritmatik Operatörler
 
 | Operatör      |  Açıklama   |
 | ------------- | ----------- |
@@ -137,7 +137,7 @@ func main(){
 | --            | Değeri bir azaltır. |
 
 
-### İlişkisel Operatörler
+İlişkisel Operatörler
 
 | Operatör      |  Açıklama   |
 | ------------- | ----------- |
@@ -149,7 +149,7 @@ func main(){
 | <=            | Küçük eşit  |
 
 
-### Mantıksal Operatörler
+Mantıksal Operatörler
 
 | Operatör      |  Açıklama   |
 | ------------- | ----------- |
@@ -158,7 +158,7 @@ func main(){
 | !             | değil       |
 
 
-### Temel Atama Operatörler
+Temel Atama Operatörler
 
 | Operatör      |  Açıklama   |
 | ------------- | ----------- |
@@ -259,4 +259,104 @@ func main() {
 
 ```
 	
+</details>
+	
+<details>
+<summary>Tarih-Saat İşlemleri</summary>
+<br>
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	birthDate := time.Date(2021, time.April, 27, 20, 0, 0, 0, time.UTC) //custom tarih
+	fmt.Println(birthDate)
+
+	currentDate := time.Now()
+	fmt.Println(currentDate)         //o anki tarih
+	fmt.Println(currentDate.Year())  //o anki yıl
+	fmt.Println(currentDate.Day())   //o anki gün
+	fmt.Println(currentDate.Month()) //o anki ay
+
+	newDay := birthDate.AddDate(0, 0, 1).Day()     //+1 gün ekler
+	newMonth := birthDate.AddDate(0, 1, 0).Month() //+1 ay ekler
+	newYear := birthDate.AddDate(1, 0, 0).Year()   //+1 yıl ekler
+	fmt.Println(newDay, newMonth, newYear)
+}
+
+```
+	
+</details>
+	
+<details>
+<summary>İf İfadesi</summary>
+<br>
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	number := 10
+
+	if number > 0 {
+		fmt.Println("Sayı pozitif")
+	} else if number < 0 {
+		fmt.Println("Sayı negatif")
+	} else {
+		fmt.Println("Sayı sıfıra eşit")
+	}
+}
+
+```
+</details>
+	
+<details>
+<summary>Switch İfadesi</summary>
+<br>
+	
+```go	
+package main
+
+import "fmt"
+
+func main() {
+	language := "de"
+
+	switch language {
+	case "tr":
+		fmt.Println("Türkçe")
+	case "en":
+		fmt.Println("İngilizce")
+	case "ru":
+		fmt.Println("Rusça")
+	default:
+		fmt.Println("Diğer")
+	}
+}
+
+```
+</details>
+	
+<details>
+<summary>For Döngüsü</summary>
+<br>
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
+	}
+}
+```
 </details>
