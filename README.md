@@ -1,8 +1,5 @@
 # lets-go
 
-Herkese selam, **GoLang** öğrenmeye başladığım bu günlerde hem *Türkçe kaynak* oluşturmak hem de kendi adıma öğrenmenin 
-en etkili yolunun birilerine anlatmak olduğunu düşündüğümden şuan incelemekte olduğunuz kaynak ortaya çıkmış bulunuyor. 
-
 <details>
 <summary>Hello World!</summary>
 <br>
@@ -425,6 +422,94 @@ func main() {
 		key Fransa value Paris
 		key İtalya value Roma
 	*/
+}
+
+```
+</details>
+
+	
+<details>
+<summary>Hata Yönetimi</summary>
+<br>
+	
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+	"log"
+	"os"
+)
+
+func main() {
+	//
+	_, err := os.Open("sample.txt")
+	if err != nil {
+		log.Fatal("Hata : ", err)
+		fmt.Println(err)
+	}
+
+	//
+	myError := errors.New("Bu bir hata!")
+	fmt.Println(myError.Error())
+}
+
+```
+</details>
+	
+<details>
+<summary>Diziler</summary>
+<br>
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	cities := [3]string{}
+	cities[0] = "Antalya"
+	cities[1] = "İstanbul"
+	cities[2] = "İzmir"
+
+	fmt.Println(cities) //get
+
+	cities[2] = "Ankara" //set
+	fmt.Println(cities[2])
+}
+
+```
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	numbers := [...]int{0, 1, 2, 3, 4, 5}
+	fmt.Println(numbers)
+}	
+
+
+```
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var colors [3]string
+	colors[0] = "Sarı"
+	colors[1] = "Mavi"
+	colors[2] = "Yeşil"
+
+	i := 0
+	for i <= len(colors)-1 {
+		fmt.Println(colors[i])
+		i++
+	}
 }
 
 ```
