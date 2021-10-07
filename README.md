@@ -697,3 +697,156 @@ func main() {
 
 ```
 </details>
+
+<details>
+<summary>Defer</summary>
+<br>
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	//defer, içerisindeki fonksiyondaki tüm işlemler bitene kadar ilgili işlemi bekletir.
+	defer fmt.Println("Hello")
+
+	fmt.Println("One")
+	fmt.Println("Two")
+	fmt.Println("Three")
+
+	/*
+		One
+		Two
+		Three
+		Hello
+	*/
+}
+
+```
+	
+```go
+package main
+
+import "fmt"
+
+var isConnect bool = false
+
+func main() {
+	fmt.Printf("connection open : %v\n", isConnect)
+	databaseProcessing()
+	fmt.Printf("connection open : %v\n", isConnect)
+	
+	/*
+	connection open : false
+	Connect to DB
+	Deferring disconnect!
+	connection open : true
+	Doing something
+	Disconnected!
+	connection open : false
+	*/
+}
+
+func databaseProcessing() {
+	connect()
+	fmt.Println("Deferring disconnect!")
+	defer disconnect()
+	fmt.Printf("connection open : %v\n", isConnect)
+	fmt.Println("Doing something")
+}
+
+func connect() {
+	isConnect = true
+	fmt.Println("Connect to DB")
+}
+
+func disconnect() {
+	isConnect = false
+	fmt.Println("Disconnected!")
+}
+
+```
+
+</details>
+	
+<details>
+<summary>Structs</summary>
+<br>
+	
+```go
+package main
+
+import "fmt"
+
+type Human struct {
+	Name    string
+	Surname string
+	Age     int
+}
+
+func main() {
+	mustafa := Human{Name: "Mustafa", Surname: "Dikyar", Age: 27}
+	fmt.Println(mustafa.Age) //27
+} 
+
+```
+	
+```go
+package main
+
+import "fmt"
+
+type Human struct {
+	Name    string
+	Surname string
+	Age     int
+}
+
+//constructure
+func CreateHuman() *Human {
+	human := new(Human)
+	return human
+}
+
+func main() {
+	human := CreateHuman()
+	human.Name = "Mustafa"
+	fmt.Println(human.Name)
+}
+
+```
+</details>
+	
+<details>
+<summary>Interfaces</summary>
+<br>
+	
+```go
+package main
+
+import "fmt"
+
+type product struct {
+	name string
+}
+
+type iProductRepository interface {
+	getProductName() string
+}
+
+func (product product) getProductName() string {
+	return product.name
+}
+
+func printProductName(product iProductRepository) {
+	fmt.Println(product.getProductName())
+}
+
+func main() {
+	product := product{name: "ürün 1"}
+	printProductName(product)
+}
+
+```
+</details>
