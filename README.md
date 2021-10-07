@@ -514,3 +514,186 @@ func main() {
 
 ```
 </details>
+
+<details>
+<summary>Slices</summary>
+<br>
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	numbers := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+
+	mySlice := numbers[:] //: tüm elemanların sayısını ifade eder.
+	fmt.Println(mySlice)  //[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+	/*Slice veri tutmaz. Slice üzerinde yapılan bir değişiklik diziyi etkiler.*/
+	mySlice[2] = 11
+	fmt.Println(numbers) //[1, 2, 11, 4, 5, 6, 7, 8, 9, 0]
+
+	numbers = append(numbers, 10) //veri ekler
+	fmt.Println(numbers)
+}
+	
+```
+</details>
+	
+<details>
+<summary>Maps</summary>
+<br>
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	//KeyValuePair
+	cities := make(map[int]string)
+	fmt.Println(cities) //map[]
+
+	cities[01] = "Adana" //set
+	cities[07] = "Antalya"
+	cities[34] = "İstanbul"
+	fmt.Println(cities)     //map[1:Adana 7:Antalya 34:İstanbul]
+	fmt.Println(cities[34]) //İstanbul
+
+	delete(cities, 34)
+	fmt.Println(cities) //map[1:Adana 7:Antalya]
+}
+
+```
+</details>
+	
+<details>
+<summary>String Metotlar</summary>
+<br>
+	
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	fmt.Println(strings.Contains("test", "st"))         //true
+	fmt.Println(strings.HasPrefix("go_lang", "go"))     //true
+	fmt.Println(strings.HasSuffix("golang.rar", "rar")) //true
+	fmt.Println(strings.Index("golang", "a"))           //3
+}
+
+```
+</details>
+	
+<details>
+<summary>Fonksiyonlar</summary>
+<br>
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	sayHello("Mustafa")
+}
+
+func sayHello(name string) {
+	fmt.Println("Hello " + name)
+}
+
+```
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	add(1, 4)
+}
+
+func add(number1, number2 int) int {
+	return number1 + number2
+}
+```
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	name, _ := getNameAndSurname("Mustafa Dikyar")
+	fmt.Println(name)
+}
+
+func getNameAndSurname(fullName string) (string, string) {
+	splitted := strings.Split(fullName, " ")
+	return splitted[0], splitted[1]
+}
+```
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	sentence := combine("Bu", "bir", "cümledir.")
+	fmt.Println(sentence)
+}
+
+func combine(terms ...string) string { //değişken sayıda parametre alması durumu
+	var sentence string
+	for _, term := range terms {
+		sentence += term + " "
+	}
+
+	return sentence
+}
+
+```
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	name, surname := split("Mustafa Dikyar")
+	fmt.Println(name, surname)
+}
+
+func split(fullName string) (name, surname string) {
+	splitted := strings.Split(fullName, " ")
+	name = splitted[0]
+	surname = splitted[1]
+	return
+}
+
+```
+	
+```go
+package main
+
+import "fmt"
+
+func main() {
+	anonymous := func(name string) (fullMessage string) { //Anonim Metot
+		fullMessage = "Hello " + name
+		return
+	}
+
+	message := anonymous("Mustafa")
+	fmt.Println(message)
+}
+}
+
+```
+</details>
